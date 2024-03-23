@@ -9,7 +9,6 @@ const createABooking = async (req, res) => {
     const coach = await User.findOne({ _id: coachId }).select([
       "-password",
       "-role",
-      "-workTime",
       "-alert",
     ]);
 

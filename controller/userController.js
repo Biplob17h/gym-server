@@ -219,8 +219,8 @@ const getAllUser = async (req, res) => {
 
 const getBookingsForUser = async (req, res) => {
   try {
-    const {  email } = req.body;
-    if ( !email) {
+    const { email } = req.query;
+    if (!email) {
       return res.status(400).json({
         status: "fail",
         error: "Please provide your credentials",
@@ -236,6 +236,15 @@ const getBookingsForUser = async (req, res) => {
       status: "success",
       bookings: result,
     });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error: error.message,
+    });
+  }
+};
+const updateTrainingSeason = async (req, res) => {
+  try {
   } catch (error) {
     res.status(400).json({
       status: "fail",
