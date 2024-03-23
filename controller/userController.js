@@ -5,6 +5,7 @@ import nodemailer from "nodemailer";
 import generateToken from "../utils/token.js";
 import getUserByEmail from "../utils/getUserByEmail.js";
 import fs from "fs";
+import Booking from "../model/bookingModel.js";
 
 // SIGN UP USER
 const createAUser = async (req, res) => {
@@ -216,4 +217,38 @@ const getAllUser = async (req, res) => {
   }
 };
 
-export { createAUser, getUser, userLogIn, updateUserProfile, getAllUser };
+const getBookingsForUser = async (req, res) => {
+  try {
+    const {  email } = req.body;
+    if ( !email) {
+      return res.status(400).json({
+        status: "fail",
+        error: "Please provide your credentials",
+      });
+    }
+
+    const query = {
+      userEmail: email,
+    };
+    const result = await Booking.find(query);
+
+    res.json({
+      status: "success",
+      bookings: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error: error.message,
+    });
+  }
+};
+
+export {
+  createAUser,
+  getUser,
+  userLogIn,
+  updateUserProfile,
+  getAllUser,
+  getBookingsForUser,
+};

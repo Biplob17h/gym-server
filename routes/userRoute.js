@@ -2,6 +2,7 @@ import express from "express";
 import {
   createAUser,
   getAllUser,
+  getBookingsForUser,
   getUser,
   updateUserProfile,
   userLogIn,
@@ -15,6 +16,7 @@ userRouter.post("/signin", userLogIn);
 
 userRouter.get("/allUser", getAllUser);
 userRouter.get("/getUser", verifyUser, getUser);
+userRouter.get("/bookings", getBookingsForUser);
 
 userRouter.patch("/updateUser", updateUserProfile);
 

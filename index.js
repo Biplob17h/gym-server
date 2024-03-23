@@ -9,6 +9,7 @@ import applicationRouter from "./routes/applicationRoute.js";
 import adminRouter from "./routes/adminRoutes.js";
 import coachRouter from "./routes/coachRoutes.js";
 import bookingRouter from "./routes/bookingRoute.js";
+import feedbackRouter from "./routes/feedBackRoutes.js";
 
 // APP
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/v1/trainer", applicationRouter);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/coach", coachRouter);
 app.use("/api/v1/booking", bookingRouter);
+app.use("/api/v1/feedback", feedbackRouter);
 
 // HOMEPAGE
 app.get("/", (req, res) => {
