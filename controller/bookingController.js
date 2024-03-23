@@ -3,10 +3,10 @@ import User from "../model/userModel.js";
 
 const createABooking = async (req, res) => {
   try {
-    const { date, coachEmail, time } = req.body;
+    const { date, coachId, time, userEmail } = req.body;
 
     // coach
-    const coach = await User.findOne({ email: coachEmail }).select([
+    const coach = await User.findOne({ _id: coachId }).select([
       "-password",
       "-role",
       "-workTime",
@@ -18,6 +18,7 @@ const createABooking = async (req, res) => {
       coachEmail,
       time,
       coach,
+      userEmail,
     };
 
     // booking

@@ -31,7 +31,6 @@ const confirmCoachApplication = async (req, res) => {
     user.age = age;
     user.workTime = workTime;
     user.role = "coach";
-    user.alert = alertData;
 
     // query
     const query = {

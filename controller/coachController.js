@@ -19,4 +19,21 @@ const getAllCoach = async (req, res) => {
   }
 };
 
-export { getAllCoach };
+const getSingleCoach = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const coach = await User.findOne({ _id: id }).select("-password");
+    res.status(200).json({
+      status: "success",
+      coach,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error: error.message,
+    });
+  }
+};
+
+export { getAllCoach, getSingleCoach };

@@ -44,6 +44,9 @@ const userSchema = mongoose.Schema({
   age: {
     type: String,
   },
+  phone: {
+    type: String,
+  },
   workTime: {
     type: Array,
   },

@@ -136,50 +136,16 @@ const getUser = async (req, res) => {
   try {
     // GET USER DATA
     const user = req.user;
-    const alert = user?.alert;
 
-    // USER DATA
-    let userData = {};
-    if (alert.status) {
-      console.log('hited')
-      // data
-      userData = {
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        photo: user.photo,
-        role: user.role,
-        alert: {
-          status: true,
-          res: alert.res,
-          message: alert.message,
-        },
-      };
-
-      // function
-      user.alert = {
-        status: false,
-      };
-
-      const query = {
-        email: user.email,
-      };
-
-      const update = await User.updateOne(query, { $set: user });
-    } else {
-      userData = {
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        photo: user.photo,
-        role: user.role,
-        alert: {
-          status: false,
-        },
-      };
-    }
+    // data
+    const userData = {
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      photo: user.photo,
+      role: user.role,
+    };
 
     res.status(200).json({
       status: "success",

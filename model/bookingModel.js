@@ -9,6 +9,10 @@ const bookingSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  userEmail: {
+    type: String,
+    required: true,
+  },
   time: {
     type: String,
     required: true,

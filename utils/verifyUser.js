@@ -3,8 +3,8 @@ import { promisify } from "util";
 import User from "../model/userModel.js";
 const verifyUser = async (req, res, next) => {
   try {
-    console.log('hitrd')
-    // get token 
+    console.log("hitrd");
+    // get token
     const token = await req.headers?.authorization?.split(" ")[1];
     if (!token) {
       return res.json({
@@ -21,6 +21,8 @@ const verifyUser = async (req, res, next) => {
     const user = await User.findOne({ email: decode.email });
 
     req.user = user;
+
+    console.log(user);
 
     next();
   } catch (error) {

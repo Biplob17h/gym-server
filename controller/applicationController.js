@@ -50,7 +50,6 @@ const createACoachApplication = async (req, res) => {
       age,
       workTime,
       photo,
-      
       phone,
     };
 
