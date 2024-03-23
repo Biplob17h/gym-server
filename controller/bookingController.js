@@ -15,7 +15,7 @@ const createABooking = async (req, res) => {
 
     const bookingData = {
       date,
-      coachEmail,
+      coachEmail: coach.email,
       time,
       coach,
       userEmail,
